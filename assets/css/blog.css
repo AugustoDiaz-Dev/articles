@@ -271,6 +271,10 @@ body::before {
   opacity: 0;
 }
 
+.accordion-panel[hidden] {
+  display: none !important;
+}
+
 .accordion-panel {
   padding: 0 1.15rem 1.15rem;
   color: rgba(255, 255, 255, 0.92);
@@ -528,6 +532,12 @@ body::before {
 .blog-footer {
   text-align: center;
   padding: 0.5rem 0 1rem;
+}
+
+.footer-tagline {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72) !important;
 }
 
 .blog-footer-link {
