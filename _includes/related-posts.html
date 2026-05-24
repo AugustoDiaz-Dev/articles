@@ -1,0 +1,48 @@
+<section class="related-posts">
+  <h2>Continue reading</h2>
+  <div class="related-posts-grid">
+    {% assign shown = 0 %}
+    {% for post in site.posts %}
+      {% if post.url != page.url and shown < 2 %}
+        {% assign same_category = false %}
+        {% for category in post.categories %}
+          {% if page.categories contains category %}
+            {% assign same_category = true %}
+          {% endif %}
+        {% endfor %}
+        {% if same_category %}
+          <a class="related-post-card" href="{{ post.url | relative_url }}">
+            <span class="related-post-category">{{ post.categories | first }}</span>
+            <h3>{{ post.title | escape }}</h3>
+            <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          </a>
+          {% assign shown = shown | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if shown < 2 %}
+      {% for post in site.posts %}
+        {% if post.url != page.url and shown < 2 %}
+          {% assign already_shown = false %}
+          {% for category in post.categories %}
+            {% if page.categories contains category %}
+              {% assign already_shown = true %}
+            {% endif %}
+          {% endfor %}
+          {% unless already_shown %}
+            <a class="related-post-card" href="{{ post.url | relative_url }}">
+              <span class="related-post-category">{{ post.categories | first }}</span>
+              <h3>{{ post.title | escape }}</h3>
+              <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            </a>
+            {% assign shown = shown | plus: 1 %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+  <p class="related-posts-all">
+    <a href="{{ '/' | relative_url }}">Browse all articles →</a>
+  </p>
+</section>

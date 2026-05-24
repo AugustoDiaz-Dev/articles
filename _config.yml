@@ -1,3 +1,24 @@
-title: Data Science Lifecycle
-description: A short seed article about the Data Science Lifecycle.
+title: Data Science Articles
+description: Short, practical articles about data science concepts, workflows, and tools.
+url: "https://augustodiaz-dev.github.io"
+baseurl: "/articles"
 theme: minima
+permalink: /:slug/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+minima:
+  skin: auto
+
+defaults:
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: post
+
+header_pages:
+  - index.html

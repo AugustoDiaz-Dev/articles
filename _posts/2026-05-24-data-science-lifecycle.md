@@ -1,13 +1,14 @@
 ---
-layout: default
-title: Data Science Lifecycle
+title: "Data Science Lifecycle: A Practical Overview"
+slug: data-science-lifecycle
+date: 2026-05-24
+categories: [Workflow]
+excerpt: "A structured workflow that transforms business problems into insights, models, and decisions."
 ---
-
-# Data Science Lifecycle: A Practical Overview
 
 The Data Science Lifecycle is a structured workflow that helps transform a business problem into useful insights, models, and decisions. It gives data scientists a repeatable path from understanding the problem to communicating the final results.
 
-![Data Science Lifecycle](assets/data-science-lifecycle.png)
+![Data Science Lifecycle]({{ "/assets/data-science-lifecycle.png" | relative_url }})
 
 ## 1. Business Understanding
 

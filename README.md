@@ -1,43 +1,62 @@
 # Articles
 
-A public collection of short, readable articles about data science — published as a simple website with GitHub Pages.
+A public blog of short, readable data science articles — published with GitHub Pages and Jekyll.
 
 **Read live:** [augustodiaz-dev.github.io/articles](https://augustodiaz-dev.github.io/articles/)
 
-## What this repository is
+## Features
 
-This repo hosts markdown-based articles that anyone can read in the browser, without installing anything. Each article covers a practical data science topic in plain language, with clear structure and visuals where helpful.
-
-It is part of a data science portfolio: a place to share ideas, explain concepts, and document how data science work is done from problem understanding to communicating results.
+- Blog index with **search** and **category filters**
+- Clean article URLs based on title slugs (e.g. `/data-science-lifecycle/`)
+- **Continue reading** recommendations at the end of each article
+- Custom **404** page
 
 ## Current articles
 
-| Article | Topic |
-|---------|-------|
-| [Data Science Lifecycle: A Practical Overview](https://augustodiaz-dev.github.io/articles/) | The 7 stages of the data science workflow — from business understanding to visualization |
+| Article | URL | Category |
+|---------|-----|----------|
+| Data Science Lifecycle: A Practical Overview | [/data-science-lifecycle/](https://augustodiaz-dev.github.io/articles/data-science-lifecycle/) | Workflow |
+| Introduction to Machine Learning | [/intro-to-machine-learning/](https://augustodiaz-dev.github.io/articles/intro-to-machine-learning/) | Machine Learning |
+| Exploratory Data Analysis Basics | [/exploratory-data-analysis-basics/](https://augustodiaz-dev.github.io/articles/exploratory-data-analysis-basics/) | Data Analysis |
 
 ## Project structure
 
 ```text
-articles/
-├── index.md              # Homepage / first article
-├── README.md
-├── _config.yml           # Jekyll site config
+core/
+├── index.html              # Blog homepage with search & categories
+├── 404.html                # Not found page
+├── _config.yml             # Jekyll config
+├── _posts/                 # Markdown articles
+├── _layouts/               # Post layout with recommendations
+├── _includes/              # Shared components & assets
 └── assets/
+    ├── css/blog.css
+    ├── js/blog.js
     └── data-science-lifecycle.png
 ```
 
-## How it works
+## Add a new article
 
-- Articles are written in **Markdown**
-- The site is built with **Jekyll** and the **Minima** theme
-- **GitHub Pages** publishes the site automatically on every push to `main`
+1. Create a file in `_posts/` named `YYYY-MM-DD-your-slug.md`
+2. Add front matter:
 
-## For contributors and readers
+```yaml
+---
+title: "Your Article Title"
+slug: your-slug
+date: 2026-05-24
+categories: [Your Category]
+excerpt: "Short summary for the index and search."
+---
+```
 
-- **Readers:** open the live link above — no setup required
-- **Authors:** edit or add `.md` files, push to `main`, and the site updates in a few minutes
+3. Push to `main` — GitHub Pages redeploys in 1–2 minutes.
 
-## License
+## Local preview
 
-Content in this repository is shared for educational and portfolio purposes.
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+Then open `http://127.0.0.1:4000/articles/`.
