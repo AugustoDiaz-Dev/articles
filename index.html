@@ -5,20 +5,23 @@ permalink: /
 ---
 
 <div class="blog-home">
-  <header class="blog-hero">
+  <header class="blog-hero glass-panel">
+    <p class="blog-eyebrow">Data Science Blog</p>
     <h1>Data Science Articles</h1>
     <p class="blog-tagline">Short, practical reads on data science workflows, machine learning, and analysis.</p>
   </header>
 
-  <section class="blog-controls" aria-label="Filter articles">
-    <label class="search-label" for="article-search">Search</label>
-    <input
-      id="article-search"
-      class="search-input"
-      type="search"
-      placeholder="Search by title or topic…"
-      autocomplete="off"
-    >
+  <section class="blog-controls glass-panel" aria-label="Filter articles">
+    <label class="search-label" for="article-search">Search articles</label>
+    <div class="search-wrap">
+      <input
+        id="article-search"
+        class="search-input"
+        type="search"
+        placeholder="Search by title or topic…"
+        autocomplete="off"
+      >
+    </div>
 
     <div class="category-filters" id="category-filters">
       <button type="button" class="category-btn is-active" data-category="all">All</button>
@@ -31,23 +34,45 @@ permalink: /
 
   <section class="blog-results">
     <p id="results-count" class="results-count" aria-live="polite"></p>
-    <div class="post-list" id="post-list">
-      {% for post in site.posts %}
+
+    <div class="accordion-list" id="post-list">
+      {% assign sorted_posts = site.posts | sort: "title" %}
+      {% for post in sorted_posts %}
         <article
-          class="post-card"
+          class="accordion-item post-card glass-panel"
           data-title="{{ post.title | downcase }}"
           data-excerpt="{{ post.excerpt | strip_html | downcase }}"
           data-categories="{% for category in post.categories %}{{ category | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}"
         >
-          <a href="{{ post.url | relative_url }}" class="post-card-link">
-            <span class="post-card-category">{{ post.categories | first }}</span>
-            <h2>{{ post.title | escape }}</h2>
-            <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-          </a>
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="panel-{{ post.slug }}"
+            id="trigger-{{ post.slug }}"
+          >
+            <span class="accordion-title">{{ post.title | escape }}</span>
+            <span class="accordion-icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="accordion-panel" id="panel-{{ post.slug }}" role="region" aria-labelledby="trigger-{{ post.slug }}" hidden>
+            <p class="accordion-excerpt">{{ post.excerpt | strip_html }}</p>
+            <dl class="accordion-meta">
+              <div class="meta-row">
+                <dt>Category</dt>
+                <dd><span class="meta-pill">{{ post.categories | first }}</span></dd>
+              </div>
+              <div class="meta-row">
+                <dt>Published</dt>
+                <dd><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></dd>
+              </div>
+            </dl>
+            <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read article</a>
+          </div>
         </article>
       {% endfor %}
     </div>
-    <p id="no-results" class="no-results" hidden>No articles match your search. Try another keyword or category.</p>
+
+    <p id="no-results" class="no-results glass-panel" hidden>No articles match your search. Try another keyword or category.</p>
   </section>
 </div>
