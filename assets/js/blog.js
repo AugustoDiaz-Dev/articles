@@ -18,9 +18,9 @@
     postCards.forEach(function (card) {
       var title = card.dataset.title || "";
       var excerpt = card.dataset.excerpt || "";
-      var categories = card.dataset.categories || "";
-      var matchesSearch = !query || title.includes(query) || excerpt.includes(query) || categories.includes(query);
-      var matchesCategory = activeCategory === "all" || categories.split(" ").includes(activeCategory);
+      var categories = (card.dataset.categories || "").split(",");
+      var matchesSearch = !query || title.includes(query) || excerpt.includes(query) || categories.some(function (c) { return c.includes(query); });
+      var matchesCategory = activeCategory === "all" || categories.includes(activeCategory);
       var visible = matchesSearch && matchesCategory;
 
       card.hidden = !visible;
