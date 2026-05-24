@@ -12,7 +12,7 @@
         {% endfor %}
         {% if same_category %}
           <a class="related-post-card" href="{{ post.url | relative_url }}">
-            <span class="related-post-category">{{ post.categories | first }}</span>
+            <span class="related-post-category">{% include category-label.html name=post.categories.first %}</span>
             <h3>{{ post.title | escape }}</h3>
             <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
           </a>
@@ -32,7 +32,7 @@
           {% endfor %}
           {% unless already_shown %}
             <a class="related-post-card" href="{{ post.url | relative_url }}">
-              <span class="related-post-category">{{ post.categories | first }}</span>
+              <span class="related-post-category">{% include category-label.html name=post.categories.first %}</span>
               <h3>{{ post.title | escape }}</h3>
               <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
             </a>

@@ -2,7 +2,7 @@
 title: "Introduction to Machine Learning"
 slug: intro-to-machine-learning
 date: 2026-05-24
-categories: [Machine Learning]
+categories: [ML]
 excerpt: "A beginner-friendly overview of what machine learning is and where it fits in data science."
 ---
 
