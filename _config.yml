@@ -19,6 +19,3 @@ defaults:
       type: "posts"
     values:
       layout: post
-
-header_pages:
-  - index.html
