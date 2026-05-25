@@ -1,0 +1,45 @@
+# Canonical categories for articles. Use `name` in post front matter (`categories: [name]`).
+# `label` is shown in the UI. `order` controls filter button order on the index page.
+# `aliases` map legacy or shorthand values to this category (for labels only; prefer `name` in new posts).
+
+- name: AI
+  label: AI
+  order: 1
+
+- name: Machine Learning
+  label: ML
+  order: 2
+  aliases:
+    - ML
+
+- name: MLOps
+  label: MLOps
+  order: 3
+
+- name: Data Science
+  label: Data Science
+  order: 4
+
+- name: Data Analysis
+  label: Data Analysis
+  order: 5
+
+- name: Data Engineering
+  label: Data Engineering
+  order: 6
+
+- name: Workflow
+  label: Workflow
+  order: 7
+
+- name: Career
+  label: Career
+  order: 8
+
+- name: Software Engineering
+  label: Software Eng.
+  order: 9
+
+- name: AI Engineering
+  label: AI Eng.
+  order: 10

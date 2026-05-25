@@ -1,0 +1,20 @@
+{%- assign used_categories = site.posts | map: "categories" | flatten | uniq -%}
+<button type="button" class="category-btn is-active" data-category="all">All</button>
+{%- assign registry = site.data.categories | sort: "order" -%}
+{%- for cat in registry -%}
+  {%- if used_categories contains cat.name -%}
+    <button type="button" class="category-btn" data-category="{{ cat.name | slugify }}">{% include category-label.html name=cat.name %}</button>
+  {%- endif -%}
+{%- endfor -%}
+{%- for name in used_categories -%}
+  {%- assign in_registry = false -%}
+  {%- for cat in registry -%}
+    {%- if cat.name == name or cat.aliases contains name -%}
+      {%- assign in_registry = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- unless in_registry -%}
+    <button type="button" class="category-btn" data-category="{{ name | slugify }}">{% include category-label.html name=name %}</button>
+  {%- endunless -%}
+{%- endfor -%}

@@ -13,6 +13,8 @@ plugins:
 minima:
   skin: auto
 
+markdown: kramdown
+
 defaults:
   - scope:
       path: "_posts"

@@ -1,0 +1,37 @@
+{%- assign post = include.post -%}
+<article
+  class="accordion-item post-card glass-panel"
+  data-title="{{ post.title | downcase }}"
+  data-excerpt="{{ post.excerpt | strip_html | downcase }}"
+  data-categories="{% for category in post.categories %}{{ category | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}"
+>
+  <button
+    type="button"
+    class="accordion-trigger"
+    aria-expanded="false"
+    aria-controls="panel-{{ post.slug }}"
+    id="trigger-{{ post.slug }}"
+  >
+    <span class="accordion-title">{{ post.title | escape }}</span>
+    <span class="accordion-icon" aria-hidden="true"></span>
+  </button>
+
+  <div class="accordion-panel" id="panel-{{ post.slug }}" role="region" aria-labelledby="trigger-{{ post.slug }}" hidden>
+    <p class="accordion-excerpt">{{ post.excerpt | strip_html }}</p>
+    <dl class="accordion-meta">
+      <div class="meta-row">
+        <dt>Category</dt>
+        <dd>
+          {%- for category in post.categories -%}
+            <span class="meta-pill">{% include category-label.html name=category %}</span>{% unless forloop.last %} {% endunless %}
+          {%- endfor -%}
+        </dd>
+      </div>
+      <div class="meta-row">
+        <dt>Published</dt>
+        <dd><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></dd>
+      </div>
+    </dl>
+    <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read article</a>
+  </div>
+</article>

@@ -2,7 +2,8 @@
   <h2>Continue reading</h2>
   <div class="related-posts-grid">
     {% assign shown = 0 %}
-    {% for post in site.posts %}
+    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {% for post in sorted_posts %}
       {% if post.url != page.url and shown < 2 %}
         {% assign same_category = false %}
         {% for category in post.categories %}
@@ -22,7 +23,7 @@
     {% endfor %}
 
     {% if shown < 2 %}
-      {% for post in site.posts %}
+      {% for post in sorted_posts %}
         {% if post.url != page.url and shown < 2 %}
           {% assign already_shown = false %}
           {% for category in post.categories %}

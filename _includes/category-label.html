@@ -1,2 +1,9 @@
 {%- assign name = include.name | default: "" -%}
-{%- if name == "Machine Learning" -%}ML{%- else -%}{{ name }}{%- endif -%}
+{%- assign label = name -%}
+{%- for cat in site.data.categories -%}
+  {%- if cat.name == name or cat.aliases contains name -%}
+    {%- assign label = cat.label | default: cat.name -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- label -}}

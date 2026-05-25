@@ -1,7 +1,7 @@
 ---
 title: "Data Science Lifecycle: A Practical Overview"
 slug: data-science-lifecycle
-date: 2026-05-24
+date: 2026-05-23
 categories: [Workflow]
 excerpt: "A structured workflow that transforms business problems into insights, models, and decisions."
 ---
@@ -41,3 +41,5 @@ The final step is communicating insights clearly. Visualizations, dashboards, an
 ## Conclusion
 
 The Data Science Lifecycle is not always linear. Teams often move back and forth between steps as they learn more about the data and the problem. A good data scientist uses this lifecycle as a guide, not as a rigid checklist.
+
+Augusto Diaz
