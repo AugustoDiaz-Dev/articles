@@ -16,14 +16,15 @@
     <span class="accordion-icon" aria-hidden="true"></span>
   </button>
 
-  <div class="accordion-panel" id="panel-{{ post.slug }}" role="region" aria-labelledby="trigger-{{ post.slug }}" hidden>
+  <div class="accordion-panel" id="panel-{{ post.slug }}" role="region" aria-labelledby="trigger-{{ post.slug }}" aria-hidden="true">
+    <div class="accordion-panel-inner">
     <p class="accordion-excerpt">{{ post.excerpt | strip_html }}</p>
     <dl class="accordion-meta">
       <div class="meta-row">
         <dt>Category</dt>
-        <dd>
+        <dd class="meta-pills">
           {%- for category in post.categories -%}
-            <span class="meta-pill">{% include category-label.html name=category %}</span>{% unless forloop.last %} {% endunless %}
+            <span class="meta-pill">{% include category-label.html name=category %}</span>
           {%- endfor -%}
         </dd>
       </div>
@@ -33,5 +34,6 @@
       </div>
     </dl>
     <a href="{{ post.url | relative_url }}" class="btn btn-primary">Read article</a>
+    </div>
   </div>
 </article>

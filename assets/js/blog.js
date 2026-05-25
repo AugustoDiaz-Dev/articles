@@ -55,7 +55,7 @@
       return;
     }
     trigger.setAttribute("aria-expanded", "false");
-    panel.hidden = true;
+    panel.setAttribute("aria-hidden", "true");
     item.classList.remove("is-open");
   }
 
@@ -66,14 +66,13 @@
       return;
     }
     trigger.setAttribute("aria-expanded", "true");
-    panel.hidden = false;
+    panel.setAttribute("aria-hidden", "false");
     item.classList.add("is-open");
   }
 
   accordionTriggers.forEach(function (trigger) {
     trigger.addEventListener("click", function () {
       var item = trigger.closest(".accordion-item");
-      var panel = item.querySelector(".accordion-panel");
       var isOpen = trigger.getAttribute("aria-expanded") === "true";
 
       postCards.forEach(function (card) {
